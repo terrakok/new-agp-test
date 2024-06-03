@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -9,15 +10,10 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            compileTaskProvider {
-                compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_1_8)
-                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
-                }
-            }
-        }
+    androidLibrary {
+        namespace = "org.company.lib"
+        compileSdk = 34
+        minSdk = 24
     }
 
     jvm()
@@ -41,22 +37,5 @@ kotlin {
             implementation(compose.uiTooling)
         }
 
-    }
-}
-
-android {
-    namespace = "org.company.lib"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    buildFeatures {
-        //enables a Compose tooling support in the AndroidStudio
-        compose = true
     }
 }
