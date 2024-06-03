@@ -1,5 +1,6 @@
 rootProject.name = "NewAgp"
 include(":composeApp")
+include(":composeLib")
 
 pluginManagement {
     repositories {

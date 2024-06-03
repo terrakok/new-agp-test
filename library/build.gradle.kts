@@ -38,7 +38,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
-            implementation(project(":composeLib"))
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
         }
 
